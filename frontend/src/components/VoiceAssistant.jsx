@@ -290,7 +290,7 @@ function VoiceAssistantUI({
                     })}
                   </div>
 
-                  <p className="phone-wave-caption">
+                  {/* <p className="phone-wave-caption">
                     {isConnecting
                       ? "Establishing your connection"
                       : !isActive
@@ -299,8 +299,8 @@ function VoiceAssistantUI({
                           ? "Your microphone is muted"
                           : waveformIsActive
                             ? "Voice activity detected"
-                            : "Listening for your voice"}
-                  </p>
+                            : ""}
+                  </p> */}
                 </div>
 
                 {bookingConfirmation && (

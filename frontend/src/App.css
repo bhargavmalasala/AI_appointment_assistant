@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 /* --------------------------------
@@ -22,12 +21,12 @@
   --danger: #c34c54;
   --danger-soft: #fbecee;
   --shadow: 0 8px 28px rgba(25, 50, 50, 0.045);
-
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: "DM Sans", sans-serif;
   transition: background 0.25s ease, color 0.25s ease;
+  padding: 22px 36px 45px;
 }
 
 .app[data-theme="dark"] {
@@ -70,10 +69,6 @@ textarea {
 
 button {
   cursor: pointer;
-}
-
-.app {
-  padding: 22px 36px 45px;
 }
 
 .dashboard {
@@ -1128,8 +1123,6 @@ button {
   }
 }
 
-
-
 /* ========================================
    PHONE-STYLE VOICE CALL BONUS
 ======================================== */
@@ -1139,9 +1132,12 @@ button {
 .voice-launcher-card {
   padding: 23px;
   border: 1px solid var(--border);
-  border-radius: 17px;
   background: var(--surface);
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  border-radius: 19px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .voice-launcher-top {
@@ -1156,10 +1152,11 @@ button {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  border-radius: 13px;
   background: var(--accent-soft);
   color: var(--accent);
   font-size: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(8, 127, 114, 0.09);
 }
 
 .voice-launcher-top h2 {
@@ -1195,6 +1192,9 @@ button {
 
 .voice-launcher-button {
   margin-top: 5px;
+  min-height: 49px;
+  border-radius: 12px;
+  font-size: 13px;
 }
 
 /* Popup backdrop */
@@ -1206,48 +1206,33 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   overflow-y: auto;
-  background: rgba(8, 19, 18, 0.72);
-  backdrop-filter: blur(8px);
-  animation: phone-overlay-in 0.22s ease;
-}
-
-@keyframes phone-overlay-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  background: rgba(5, 18, 17, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 18px;
 }
 
 /* Phone window */
 
 .phone-call-window {
   width: 100%;
-  max-width: 440px;
-  max-height: min(900px, 94vh);
+  color: var(--text);
+  max-width: 460px;
+  border: 1px solid rgba(91, 190, 166, 0.24);
+  border-radius: 28px;
+  background: radial-gradient(
+      ellipse at 50% -15%,
+      rgba(23, 139, 117, 0.17),
+      transparent 55%
+    ),
+    var(--surface);
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.035);
   display: flex;
   flex-direction: column;
+  max-height: min(760px, 90vh);
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 25px;
-  background: var(--surface);
-  color: var(--text);
-  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.3);
-  animation: phone-window-in 0.3s ease;
-}
-
-@keyframes phone-window-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 /* Header */
@@ -1256,34 +1241,33 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 19px 22px;
+  padding: 19px 23px;
   border-bottom: 1px solid var(--border);
 }
 
 .phone-call-label {
   color: var(--accent);
-  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 1.4px;
+  font-size: 10px;
+  letter-spacing: 1.7px;
 }
 
 .phone-call-header p {
   margin: 5px 0 0;
   color: var(--text-secondary);
-  font-size: 10px;
 }
 
 .phone-close-button {
-  width: 32px;
-  height: 32px;
   display: grid;
   place-items: center;
   border: 1px solid var(--border);
-  border-radius: 50%;
   background: var(--surface-soft);
   color: var(--text-secondary);
-  font-size: 13px;
   transition: all 0.2s ease;
+  width: 35px;
+  height: 35px;
+  border-radius: 11px;
+  font-size: 14px;
 }
 
 .phone-close-button:hover {
@@ -1298,22 +1282,8 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 20px 10px;
   text-align: center;
-}
-
-.phone-caller-avatar {
-  width: 84px;
-  height: 84px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 14px;
-  border: 7px solid var(--accent-soft);
-  border-radius: 50%;
-  background: var(--accent);
-  color: white;
-  font-size: 34px;
-  box-shadow: 0 0 0 5px var(--surface);
+  padding: 25px 20px 8px;
 }
 
 .phone-caller-avatar.phone-speaking {
@@ -1346,13 +1316,15 @@ button {
   margin: 0;
   color: var(--text);
   font-family: "Manrope", sans-serif;
-  font-size: 19px;
   font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.6px;
 }
 
 .phone-caller-subtitle {
   margin: 5px 0 0;
   color: var(--text-secondary);
+  margin-top: 6px;
   font-size: 11px;
 }
 
@@ -1360,10 +1332,10 @@ button {
   display: flex;
   align-items: center;
   gap: 7px;
-  margin-top: 14px;
   color: var(--text-secondary);
-  font-size: 11px;
   font-weight: 600;
+  margin-top: 15px;
+  font-size: 11px;
 }
 
 .phone-state-dot {
@@ -1389,45 +1361,37 @@ button {
 }
 
 .phone-call-timer {
-  margin-top: 9px;
   color: var(--text);
   font-family: "Manrope", sans-serif;
-  font-size: 24px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 1px;
+  margin-top: 8px;
+  font-size: 27px;
+  letter-spacing: 1.5px;
 }
 
 .phone-connecting-text {
-  margin-top: 12px;
   color: var(--text-secondary);
+  margin-top: 10px;
   font-size: 10px;
 }
 
 /* Waveform */
 
 .phone-waveform {
-  height: 43px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3px;
   padding: 0 20px;
+  height: 48px;
+  gap: 4px;
+  margin-top: 3px;
 }
 
 .phone-waveform span {
-  width: 3px;
   height: 5px;
-  border-radius: 5px;
-  background: var(--accent);
-  opacity: 0.35;
 }
 
-.phone-waveform.active span {
-  opacity: 1;
-  animation: phone-wave-motion 0.65s ease-in-out infinite alternate;
-  animation-delay: calc(var(--wave-index) * 0.035s);
-}
 @keyframes phone-wave-motion {
   0% {
     height: 5px;
@@ -1438,11 +1402,12 @@ button {
 }
 
 .phone-wave-caption {
-  min-height: 17px;
-  margin: 0;
   color: var(--text-secondary);
-  font-size: 9px;
   text-align: center;
+  min-height: 18px;
+  margin: 0 0 5px;
+  font-size: 9px;
+  letter-spacing: 0.2px;
 }
 
 /* Booking confirmation */
@@ -1451,11 +1416,12 @@ button {
   display: flex;
   align-items: flex-start;
   gap: 11px;
-  margin: 12px 18px;
-  padding: 12px;
   border: 1px solid var(--success);
-  border-radius: 12px;
   background: var(--success-soft);
+  margin: 12px 19px;
+  padding: 13px;
+  border-radius: 13px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .phone-confirmation-icon {
@@ -1486,36 +1452,37 @@ button {
 /* Transcript */
 
 .phone-transcript {
-  min-height: 145px;
   display: flex;
   flex-direction: column;
-  margin: 12px 17px 0;
   overflow: hidden;
+  min-height: 165px;
+  margin: 13px 19px 0;
   border: 1px solid var(--border);
-  border-radius: 13px;
+  border-radius: 16px;
   background: var(--surface-soft);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.025);
 }
 
 .phone-transcript-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 13px;
   border-bottom: 1px solid var(--border);
+  padding: 14px 15px;
 }
 
 .phone-transcript-header h3 {
   margin: 0;
   color: var(--text);
   font-family: "Manrope", sans-serif;
-  font-size: 11px;
   font-weight: 800;
+  font-size: 12px;
+  letter-spacing: -0.2px;
 }
 
 .phone-transcript-header p {
   margin: 4px 0 0;
   color: var(--text-secondary);
-  font-size: 9px;
 }
 
 .phone-live-indicator {
@@ -1523,8 +1490,12 @@ button {
   align-items: center;
   gap: 5px;
   color: var(--success);
-  font-size: 8px;
   font-weight: 800;
+  padding: 6px 9px;
+  border: 1px solid var(--success-soft);
+  border-radius: 20px;
+  background: var(--success-soft);
+  font-size: 8px;
 }
 
 .phone-live-indicator span {
@@ -1535,14 +1506,17 @@ button {
 }
 
 .phone-transcript-messages {
-  min-height: 110px;
-  max-height: 180px;
   display: flex;
   flex-direction: column;
-  gap: 11px;
   overflow-y: auto;
-  padding: 12px;
+  min-height: 115px;
+  max-height: 190px;
+  gap: 13px;
+  padding: 14px;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
   scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
 }
 
 .phone-transcript-empty {
@@ -1554,10 +1528,8 @@ button {
   font-size: 10px;
   line-height: 1.7;
   text-align: center;
-}
-
-.phone-message {
-  max-width: 90%;
+  gap: 6px;
+  min-height: 120px;
 }
 
 .phone-message-user {
@@ -1570,35 +1542,18 @@ button {
   text-align: left;
 }
 
-.phone-message > span {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--text-secondary);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-}
-
 .phone-message p {
   margin: 0;
-  padding: 9px 11px;
   border: 1px solid var(--border);
-  border-radius: 10px;
   background: var(--surface);
   color: var(--text);
-  font-size: 10px;
-  line-height: 1.55;
   overflow-wrap: anywhere;
 }
 
 .phone-message-user p {
   border-color: transparent;
-  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 4px;
   background: var(--accent-soft);
-}
-
-.phone-message-assistant p {
-  border-bottom-left-radius: 3px;
 }
 
 /* Controls */
@@ -1607,28 +1562,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 35px;
-  padding: 19px 15px 14px;
-}
-
-.phone-control-button,
-.phone-end-button {
-  width: 57px;
-  height: 57px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  border: none;
-  border-radius: 50%;
-  transition: all 0.2s ease;
-}
-
-.phone-control-button {
-  background: var(--surface-soft);
-  color: var(--text);
-  border: 1px solid var(--border);
+  gap: 25px;
+  padding: 20px 15px 16px;
 }
 
 .phone-control-button:hover:not(:disabled) {
@@ -1647,38 +1582,8 @@ button {
   opacity: 0.45;
 }
 
-.phone-control-button span {
-  font-size: 17px;
-}
-
-.phone-control-button small,
-.phone-end-button small {
-  font-size: 8px;
-  font-weight: 700;
-}
-
-.phone-end-button {
-  background: #c84450;
-  color: white;
-  transform: rotate(135deg);
-}
-
-.phone-end-button:hover:not(:disabled) {
-  background: #a9323e;
-  transform: rotate(135deg) scale(1.07);
-}
-
 .phone-end-button span {
   font-size: 19px;
-}
-
-.phone-end-button small {
-  transform: rotate(-135deg);
-}
-
-.phone-end-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
 }
 
 .phone-call-error {
@@ -1692,11 +1597,16 @@ button {
 }
 
 .phone-call-footer {
-  padding: 12px;
   border-top: 1px solid var(--border);
   color: var(--muted);
-  font-size: 9px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 10px;
+  font-size: 9px;
+  letter-spacing: 0.2px;
 }
 
 /* Mobile call layout */
@@ -1705,42 +1615,6 @@ button {
   .phone-call-overlay {
     align-items: center;
     padding: 8px;
-  }
-
-  .phone-call-window {
-    max-height: 96vh;
-    border-radius: 20px;
-  }
-
-  .phone-call-header {
-    padding: 14px 16px;
-  }
-
-  .phone-caller-area {
-    padding-top: 17px;
-  }
-
-  .phone-caller-avatar {
-    width: 70px;
-    height: 70px;
-    font-size: 29px;
-  }
-
-  .phone-caller-area h2 {
-    font-size: 17px;
-  }
-
-  .phone-transcript {
-    margin-left: 11px;
-    margin-right: 11px;
-  }
-
-  .phone-transcript-messages {
-    max-height: 150px;
-  }
-
-  .phone-call-controls {
-    padding-top: 14px;
   }
 }
 
@@ -1757,37 +1631,6 @@ button {
 /* ==========================================
    CARECONNECT PREMIUM CALL POPUP
    ========================================== */
-
-.phone-call-overlay {
-  background: rgba(5, 18, 17, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  padding: 18px;
-}
-
-.phone-call-window {
-  max-width: 460px;
-  max-height: min(900px, 94vh);
-  border: 1px solid rgba(91, 190, 166, 0.24);
-  border-radius: 28px;
-  background:
-    radial-gradient(
-      ellipse at 50% -15%,
-      rgba(23, 139, 117, 0.17),
-      transparent 55%
-    ),
-    var(--surface);
-  box-shadow:
-    0 35px 100px rgba(0, 0, 0, 0.42),
-    0 0 0 1px rgba(255, 255, 255, 0.035);
-}
-
-/* Popup header */
-
-.phone-call-header {
-  padding: 19px 23px;
-  border-bottom: 1px solid var(--border);
-}
 
 .phone-header-brand {
   display: flex;
@@ -1807,27 +1650,9 @@ button {
   font-size: 21px;
 }
 
-.phone-call-label {
-  font-size: 10px;
-  letter-spacing: 1.7px;
-}
-
 .phone-call-header p {
   margin-top: 4px;
   font-size: 10px;
-}
-
-.phone-close-button {
-  width: 35px;
-  height: 35px;
-  border-radius: 11px;
-  font-size: 14px;
-}
-
-/* Assistant identity */
-
-.phone-caller-area {
-  padding: 25px 20px 8px;
 }
 
 .phone-avatar-ring {
@@ -1876,8 +1701,7 @@ button {
   background: linear-gradient(145deg, #159b83, #086b60);
   color: white;
   font-size: 35px;
-  box-shadow:
-    0 9px 25px rgba(5, 112, 94, 0.3),
+  box-shadow: 0 9px 25px rgba(5, 112, 94, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -1904,40 +1728,6 @@ button {
   box-shadow: 0 0 8px var(--success);
 }
 
-.phone-caller-area h2 {
-  font-size: 20px;
-  letter-spacing: -0.6px;
-}
-
-.phone-caller-subtitle {
-  margin-top: 6px;
-  font-size: 11px;
-}
-
-.phone-call-state {
-  margin-top: 15px;
-  font-size: 11px;
-}
-
-.phone-call-timer {
-  margin-top: 8px;
-  font-size: 27px;
-  letter-spacing: 1.5px;
-}
-
-.phone-connecting-text {
-  margin-top: 10px;
-  font-size: 10px;
-}
-
-/* Premium waveform */
-
-.phone-waveform {
-  height: 48px;
-  gap: 4px;
-  margin-top: 3px;
-}
-
 .phone-waveform span {
   width: 3px;
   min-height: 5px;
@@ -1956,69 +1746,14 @@ button {
   animation-delay: calc(var(--wave-index) * 0.035s);
 }
 
-.phone-wave-caption {
-  min-height: 18px;
-  margin: 0 0 5px;
-  font-size: 9px;
-  letter-spacing: 0.2px;
-}
-
-/* Booking confirmation */
-
-.phone-booking-confirmation {
-  margin: 12px 19px;
-  padding: 13px;
-  border-radius: 13px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-}
-
-/* Transcript container */
-
-.phone-transcript {
-  min-height: 165px;
-  margin: 13px 19px 0;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--surface-soft);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.025);
-}
-
-.phone-transcript-header {
-  padding: 14px 15px;
-}
-
-.phone-transcript-header h3 {
-  font-size: 12px;
-  letter-spacing: -0.2px;
-}
-
 .phone-transcript-header p {
   margin-top: 5px;
   font-size: 9px;
 }
 
-.phone-live-indicator {
-  padding: 6px 9px;
-  border: 1px solid var(--success-soft);
-  border-radius: 20px;
-  background: var(--success-soft);
-  font-size: 8px;
-}
-
 .phone-live-indicator span {
   box-shadow: 0 0 7px var(--success);
   animation: premium-live-pulse 1.4s infinite;
-}
-
-.phone-transcript-messages {
-  min-height: 115px;
-  max-height: 190px;
-  gap: 13px;
-  padding: 14px;
-  overscroll-behavior: contain;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--muted) transparent;
 }
 
 .phone-transcript-messages::-webkit-scrollbar {
@@ -2028,11 +1763,6 @@ button {
 .phone-transcript-messages::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--muted);
-}
-
-.phone-transcript-empty {
-  gap: 6px;
-  min-height: 120px;
 }
 
 .phone-transcript-empty-icon {
@@ -2066,6 +1796,9 @@ button {
 }
 
 .phone-message > span {
+  display: block;
+  color: var(--text-secondary);
+  font-weight: 800;
   margin-bottom: 5px;
   font-size: 8px;
   letter-spacing: 0.8px;
@@ -2078,24 +1811,13 @@ button {
   line-height: 1.65;
 }
 
-.phone-message-user p {
-  border-bottom-right-radius: 4px;
-  background: var(--accent-soft);
-}
-
 .phone-message-assistant p {
   border-bottom-left-radius: 4px;
 }
 
-/* Call controls */
-
-.phone-call-controls {
-  gap: 25px;
-  padding: 20px 15px 16px;
-}
-
 .phone-control-button,
 .phone-end-button {
+  transition: all 0.2s ease;
   width: 72px;
   height: 66px;
   flex-shrink: 0;
@@ -2145,6 +1867,7 @@ button {
 }
 
 /* The icon rotates independently. The button and label remain upright. */
+
 .phone-end-icon {
   width: 25px;
   height: 25px;
@@ -2166,18 +1889,6 @@ button {
   box-shadow: none;
 }
 
-/* Footer */
-
-.phone-call-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 7px;
-  padding: 13px 10px;
-  font-size: 9px;
-  letter-spacing: 0.2px;
-}
-
 .phone-call-footer span:first-child {
   color: var(--accent);
   font-size: 12px;
@@ -2189,15 +1900,6 @@ button {
   font-size: 7px;
   font-weight: 700;
   letter-spacing: 0.7px;
-}
-
-/* Launcher card refinement */
-
-.voice-launcher-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 19px;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .voice-launcher-card::before {
@@ -2219,17 +1921,6 @@ button {
 .voice-launcher-button {
   position: relative;
   z-index: 1;
-}
-
-.voice-launcher-icon {
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(8, 127, 114, 0.09);
-}
-
-.voice-launcher-button {
-  min-height: 49px;
-  border-radius: 12px;
-  font-size: 13px;
 }
 
 /* Animations */
@@ -2277,13 +1968,9 @@ button {
 /* Mobile adjustments */
 
 @media (max-width: 600px) {
-  .phone-call-overlay {
-    padding: 8px;
-  }
-
   .phone-call-window {
-    max-height: 96vh;
     border-radius: 23px;
+    max-height: 88vh;
   }
 
   .phone-caller-area {
@@ -2329,20 +2016,14 @@ button {
    FIX: STABLE WAVEFORM AND CALL CONTROLS
 ========================================= */
 
-/* Keep the popup content in a fixed vertical layout */
-.phone-call-window {
-  display: flex;
-  flex-direction: column;
-  max-height: min(760px, 90vh);
-  overflow: hidden;
-}
-
 /* Header must not shrink */
+
 .phone-call-window .phone-header {
   flex-shrink: 0;
 }
 
 /* Waveform gets a fixed-height area */
+
 .phone-call-window .phone-wave,
 .phone-call-window .phone-waveform,
 .phone-call-window .phone-visualizer {
@@ -2357,6 +2038,7 @@ button {
 }
 
 /* Keep individual waveform bars within the fixed area */
+
 .phone-call-window .phone-wave span,
 .phone-call-window .phone-waveform span,
 .phone-call-window .phone-visualizer span {
@@ -2365,12 +2047,14 @@ button {
 }
 
 /* Transcript uses the remaining available space */
+
 .phone-call-window .phone-transcript,
 .phone-call-window .phone-transcript-messages {
   min-height: 0;
 }
 
 /* Footer stays at the bottom */
+
 .phone-call-window .phone-footer,
 .phone-call-window .phone-controls,
 .phone-call-window .phone-call-controls {
@@ -2380,6 +2064,7 @@ button {
 }
 
 /* Keep the action buttons in one stable row */
+
 .phone-call-window .phone-controls,
 .phone-call-window .phone-call-controls {
   display: flex;
@@ -2390,6 +2075,7 @@ button {
 }
 
 /* Prevent button movement */
+
 .phone-call-window .phone-controls button,
 .phone-call-window .phone-call-controls button {
   flex-shrink: 0;
@@ -2397,6 +2083,7 @@ button {
 }
 
 /* Do not rotate the end-call icon */
+
 .phone-call-window .phone-end-icon {
   display: inline-flex;
   align-items: center;
@@ -2406,12 +2093,14 @@ button {
 }
 
 /* Ensure the end-call button itself is not rotated */
+
 .phone-call-window .phone-end-button {
   transform: none !important;
   rotate: none !important;
 }
 
 /* Keep footer buttons visually centered */
+
 .phone-call-window .phone-end-button,
 .phone-call-window .phone-mute-button {
   display: inline-flex;
@@ -2421,11 +2110,8 @@ button {
 }
 
 /* Small screen adjustment */
-@media (max-width: 600px) {
-  .phone-call-window {
-    max-height: 88vh;
-  }
 
+@media (max-width: 600px) {
   .phone-call-window .phone-wave,
   .phone-call-window .phone-waveform,
   .phone-call-window .phone-visualizer {
@@ -2453,6 +2139,7 @@ button {
 }
 
 /* Header */
+
 .phone-split-header {
   flex-shrink: 0;
   width: 100%;
@@ -2489,6 +2176,7 @@ button {
 }
 
 /* Main two-column layout */
+
 .phone-split-body {
   flex: 1;
   min-height: 0;
@@ -2498,6 +2186,7 @@ button {
 }
 
 /* Left call panel */
+
 .phone-call-left {
   min-width: 0;
   min-height: 0;
@@ -2510,6 +2199,7 @@ button {
 }
 
 /* Compact caller information */
+
 .phone-call-left .phone-caller-area {
   flex-shrink: 0;
   padding: 4px 0 12px;
@@ -2550,6 +2240,7 @@ button {
 }
 
 /* Fixed waveform region: animation cannot move other elements */
+
 .phone-wave-area {
   width: 100%;
   height: 104px;
@@ -2566,26 +2257,21 @@ button {
 
 .phone-wave-area .phone-waveform {
   width: 100%;
-  height: 58px;
-  min-height: 58px;
-  max-height: 58px;
   flex-shrink: 0;
+  position: relative;
+  perspective: 400px;
+  min-height: 100px;
+  height: 100px;
+  max-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
   overflow: hidden;
 }
 
 .phone-wave-area .phone-waveform span {
-  flex: 0 1 4px;
-  min-width: 2px;
-  max-width: 5px;
-  height: var(--wave-height, 20px);
-  max-height: 48px;
-  border-radius: 8px;
   transform: none;
-  transition: height 180ms ease;
 }
 
 .phone-wave-area .phone-wave-caption {
@@ -2596,6 +2282,7 @@ button {
 }
 
 /* Booking confirmation stays inside left panel */
+
 .phone-call-left .phone-booking-confirmation {
   width: 100%;
   flex-shrink: 0;
@@ -2603,6 +2290,7 @@ button {
 }
 
 /* Call controls anchored at the bottom */
+
 .phone-call-left .phone-split-controls {
   width: 100%;
   flex-shrink: 0;
@@ -2646,6 +2334,7 @@ button {
 }
 
 /* Right transcript panel */
+
 .phone-call-right {
   min-width: 0;
   min-height: 0;
@@ -2663,26 +2352,33 @@ button {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding: 8px 10px;
+  box-sizing: border-box;
 }
 
 /* Transcript heading stays visible */
+
 .phone-call-right .phone-transcript-header {
   flex-shrink: 0;
-  padding: 4px 2px 16px;
+  padding: 8px 10px 18px;
+  margin-bottom: 4px;
 }
 
 /* Only this area scrolls */
+
 .phone-call-right .phone-transcript-messages {
   flex: 1;
   min-height: 0;
   height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 14px 8px 14px 2px;
   scroll-behavior: smooth;
+  padding: 12px 14px 18px;
+  box-sizing: border-box;
 }
 
 /* Empty transcript state */
+
 .phone-call-right .phone-transcript-empty {
   min-height: 100%;
   display: flex;
@@ -2690,17 +2386,23 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 24px 12px;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 /* Message spacing */
+
 .phone-call-right .phone-message {
   max-width: 92%;
-  margin-bottom: 16px;
   overflow-wrap: anywhere;
+  padding: 12px 15px;
+  margin: 0 0 16px;
+  box-sizing: border-box;
+  border-radius: 14px;
 }
 
 /* Footer */
+
 .phone-split-footer {
   min-height: 42px;
   flex-shrink: 0;
@@ -2714,6 +2416,7 @@ button {
 }
 
 /* Keep end-call icon upright */
+
 .phone-split-window .phone-end-icon {
   transform: none !important;
   rotate: none !important;
@@ -2725,6 +2428,7 @@ button {
 }
 
 /* Scrollbar styling */
+
 .phone-call-right .phone-transcript-messages::-webkit-scrollbar {
   width: 5px;
 }
@@ -2735,6 +2439,7 @@ button {
 }
 
 /* Mobile layout */
+
 @media (max-width: 680px) {
   .phone-call-window.phone-split-window {
     width: 95vw;
@@ -2774,12 +2479,6 @@ button {
     max-height: 75px;
   }
 
-  .phone-wave-area .phone-waveform {
-    height: 42px;
-    min-height: 42px;
-    max-height: 42px;
-  }
-
   .phone-call-left .phone-split-controls {
     padding: 8px 0 2px;
   }
@@ -2804,31 +2503,8 @@ button {
   }
 }
 
-/* Transcript panel inner spacing */
-.phone-call-right .phone-transcript {
-  padding: 8px 10px;
-  box-sizing: border-box;
-}
-
-.phone-call-right .phone-transcript-header {
-  padding: 8px 10px 18px;
-  margin-bottom: 4px;
-}
-
-.phone-call-right .phone-transcript-messages {
-  padding: 12px 14px 18px;
-  box-sizing: border-box;
-}
-
-/* Give each message comfortable breathing room */
-.phone-call-right .phone-message {
-  padding: 12px 15px;
-  margin: 0 0 16px;
-  box-sizing: border-box;
-  border-radius: 14px;
-}
-
 /* Keep message labels and text away from bubble edges */
+
 .phone-call-right .phone-message > span {
   display: block;
   margin-bottom: 7px;
@@ -2842,12 +2518,6 @@ button {
   overflow-wrap: anywhere;
 }
 
-/* Empty state spacing */
-.phone-call-right .phone-transcript-empty {
-  padding: 24px;
-  box-sizing: border-box;
-}
-
 @media (max-width: 680px) {
   .phone-call-right .phone-transcript {
     padding: 4px;
@@ -2859,122 +2529,28 @@ button {
 }
 
 /* ==========================================
-   REALISTIC VOICE WAVEFORM ANIMATION
+   WAVEFORM BARS (height driven by --wave-height)
 ========================================== */
 
-.phone-wave-area .phone-waveform {
-  position: relative;
-  gap: 4px;
-  perspective: 400px;
-}
-
-.phone-wave-area .phone-waveform span {
-  width: 4px;
-  min-width: 3px;
-  max-width: 5px;
-  height: var(--wave-height, 20px);
-  max-height: 50px;
-  border-radius: 20px;
-  transform-origin: center;
-  will-change: transform, opacity;
-  animation: waveform-idle 1.8s ease-in-out infinite;
-  animation-delay: var(--wave-delay, 0s);
-}
-
-/* Gentle movement while listening */
-@keyframes waveform-idle {
-  0%, 100% {
-    transform: scaleY(0.22);
-    opacity: 0.45;
-  }
-
-  50% {
-    transform: scaleY(0.48);
-    opacity: 0.75;
-  }
-}
-
-/* More energetic movement while speaking */
 .phone-wave-area .phone-waveform.active span {
-  animation-name: waveform-speaking;
-  animation-duration: var(--wave-duration, 0.8s);
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
   opacity: 1;
 }
 
-@keyframes waveform-speaking {
-  0%, 100% {
-    transform: scaleY(0.25);
-  }
-
-  20% {
-    transform: scaleY(0.85);
-  }
-
-  45% {
-    transform: scaleY(0.4);
-  }
-
-  65% {
-    transform: scaleY(1.2);
-  }
-
-  85% {
-    transform: scaleY(0.55);
-  }
-}
-
-/* Slightly different rhythm across the bars */
-.phone-wave-area .phone-waveform span:nth-child(3n) {
-  animation-direction: alternate;
-}
-
-.phone-wave-area .phone-waveform span:nth-child(4n) {
-  animation-direction: alternate-reverse;
-}
-
-.phone-wave-area .phone-waveform span:nth-child(5n) {
-  animation-duration: 1.1s;
-}
-
 /* Reduced motion accessibility */
+
 @media (prefers-reduced-motion: reduce) {
   .phone-wave-area .phone-waveform span {
-    animation: none !important;
     transform: scaleY(0.5);
   }
 }
-.phone-wave-area .phone-waveform {
-  height: 58px;
-  min-height: 58px;
-  max-height: 58px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  overflow: hidden;
-}
 
-.phone-wave-area .phone-waveform span {
-  display: block;
-  flex: 0 1 4px;
-  min-width: 2px;
-  max-width: 5px;
-  border-radius: 20px;
-  background: var(--accent-color, #20b99a);
-  transition: height 75ms linear;
-  animation: none !important;
-  will-change: height;
-}
 /* =========================================
    CARECONNECT - PREMIUM CALL TRANSITIONS
 ========================================= */
 
 .phone-call-window {
   animation: careconnect-call-enter 350ms ease-out both;
-  transition:
-    box-shadow 250ms ease,
+  transition: box-shadow 250ms ease,
     border-color 250ms ease,
     transform 250ms ease;
 }
@@ -3019,8 +2595,7 @@ button {
 /* Live speaking glow */
 
 .phone-call-window.call-speaking .phone-avatar-ring {
-  box-shadow:
-    0 0 0 7px rgba(32, 185, 154, 0.08),
+  box-shadow: 0 0 0 7px rgba(32, 185, 154, 0.08),
     0 0 28px rgba(32, 185, 154, 0.25);
 }
 
@@ -3033,36 +2608,25 @@ button {
   50% { opacity: 0.45; }
 }
 
-/* Smooth waveform movement */
-
-.phone-wave-area .phone-waveform {
-  min-height: 100px;
-  height: 100px;
-  max-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  overflow: hidden;
-}
-
 .phone-wave-area .phone-waveform span {
   display: block;
+  width: 4px;
+  height: var(--wave-height, 20px);
+  max-height: 50px;
+  transform-origin: center;
   flex: 0 1 4px;
   min-width: 2px;
   max-width: 5px;
   border-radius: 20px;
   background: var(--accent-color, #20b99a);
-  transition:
-    height 90ms ease-out,
+  transition: height 90ms ease-out,
     opacity 150ms ease,
     box-shadow 150ms ease;
   animation: none !important;
   will-change: height;
 }
 
-.phone-call-window.call-speaking
-.phone-wave-area .phone-waveform span {
+.phone-call-window.call-speaking .phone-wave-area .phone-waveform span {
   box-shadow: 0 0 8px rgba(32, 185, 154, 0.3);
 }
 
@@ -3079,6 +2643,7 @@ button {
 }
 
 /* Highlight newly booked or cancelled appointments */
+
 .appointment-highlight {
   animation: appointmentHighlight 3s ease-in-out;
   background: rgba(16, 185, 129, 0.18) !important;
@@ -3092,4 +2657,136 @@ button {
   100% {
     background: transparent;
   }
+}
+
+
+/* ==========================================
+   FIX: INTERNAL CALL TRANSCRIPT MESSAGES
+========================================== */
+
+/* Transcript message layout */
+.phone-call-right .phone-message {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: 88%;
+  min-width: 0;
+  padding: 0;
+  margin: 0 0 16px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow-wrap: anywhere;
+  animation: premium-message-in 0.22s ease both;
+}
+
+/* Assistant messages on the left */
+.phone-call-right .phone-message-assistant {
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* User messages on the right */
+.phone-call-right .phone-message-user {
+  align-self: flex-end;
+  text-align: right;
+}
+
+/* Message labels */
+.phone-call-right .phone-message > span {
+  display: block;
+  margin: 0 0 6px;
+  padding: 0;
+  color: var(--text-secondary);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Actual message bubble */
+.phone-call-right .phone-message p {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 11px 15px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.65;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.025);
+}
+
+/* Assistant bubble */
+.phone-call-right .phone-message-assistant p {
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* User bubble */
+.phone-call-right .phone-message-user p {
+  align-self: flex-end;
+  border-color: transparent;
+  border-bottom-right-radius: 4px;
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* Consistent spacing between messages */
+.phone-call-right .phone-transcript-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* Mobile transcript */
+@media (max-width: 680px) {
+  .phone-call-right .phone-message {
+    max-width: 94%;
+  }
+
+  .phone-call-right .phone-message p {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+}
+/* Keep call controls from covering the listening indicator */
+.phone-call-controls.phone-split-controls {
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+/* Reserve space for the controls */
+.phone-call-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.phone-transcript-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+/* Keep listening status visible above the controls */
+.phone-call-right .listening-indicator {
+  position: relative;
+  z-index: 6;
+  margin-bottom: 12px;
+  flex-shrink: 0;
 }
