@@ -1,0 +1,3097 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* --------------------------------
+   DESIGN SYSTEM
+-------------------------------- */
+
+.app {
+  --bg: #f5f7f8;
+  --surface: #ffffff;
+  --surface-soft: #f8fafb;
+  --surface-hover: #f1f5f5;
+  --text: #172b2b;
+  --text-secondary: #657575;
+  --muted: #91a0a0;
+  --border: #e6eceb;
+  --accent: #087f72;
+  --accent-hover: #066b61;
+  --accent-soft: #e5f4f1;
+  --success: #16845d;
+  --success-soft: #e6f5ed;
+  --danger: #c34c54;
+  --danger-soft: #fbecee;
+  --shadow: 0 8px 28px rgba(25, 50, 50, 0.045);
+
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.app[data-theme="dark"] {
+  --bg: #101918;
+  --surface: #192523;
+  --surface-soft: #202e2b;
+  --surface-hover: #263633;
+  --text: #e8f0ed;
+  --text-secondary: #a3b5ae;
+  --muted: #71857d;
+  --border: #2b3b37;
+  --accent: #56c5ad;
+  --accent-hover: #76d8c1;
+  --accent-soft: #203b35;
+  --success: #66d3a0;
+  --success-soft: #1d3930;
+  --danger: #ef858b;
+  --danger-soft: #41272b;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+}
+
+/* --------------------------------
+   GLOBAL
+-------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  padding: 22px 36px 45px;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* --------------------------------
+   HEADER
+-------------------------------- */
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--accent);
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: 0 5px 15px rgba(8, 127, 114, 0.17);
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.9px;
+  color: var(--text);
+}
+
+.brand p {
+  margin: 3px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.dashboard-date {
+  margin-left: auto;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 10px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* --------------------------------
+   OVERVIEW CARDS - COMPACT
+-------------------------------- */
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.overview-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 92px;
+  padding: 16px 19px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  box-shadow: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.overview-card p {
+  margin: 0 0 8px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.overview-card h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* --------------------------------
+   MAIN GRID
+-------------------------------- */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 370px;
+  align-items: start;
+  gap: 18px;
+}
+
+.dashboard-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dashboard-sidebar {
+  min-width: 0;
+  position: sticky;
+  top: 12px;
+}
+
+/* --------------------------------
+   SECTIONS
+-------------------------------- */
+
+.dashboard-section {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.45px;
+}
+
+.section-heading p {
+  margin: 5px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* --------------------------------
+   DOCTOR CARDS
+-------------------------------- */
+
+.doctor-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.doctor-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface-soft);
+  transition: all 0.2s ease;
+}
+
+.doctor-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.doctor-card h3 {
+  margin: 0 0 7px;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.doctor-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* --------------------------------
+   TABLES
+-------------------------------- */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.appointments-table th {
+  padding: 13px 15px;
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.appointments-table td {
+  padding: 13px 15px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.appointments-table tbody tr {
+  transition: background 0.18s ease;
+}
+
+.appointments-table tbody tr:hover {
+  background: var(--surface-hover);
+}
+
+.appointments-table td[colspan] {
+  padding: 26px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* --------------------------------
+   APPOINTMENT STATUS
+-------------------------------- */
+
+.appointment-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+}
+
+.status-booked {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.status-cancelled {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+/* --------------------------------
+   ERROR MESSAGE
+-------------------------------- */
+
+.dashboard-error {
+  padding: 13px 16px;
+  margin: 0 0 15px;
+  border: 1px solid var(--danger);
+  border-radius: 10px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 13px;
+}
+
+/* ========================================
+   CARECONNECT VOICE ASSISTANT
+======================================== */
+
+.assistant-container {
+  width: 100%;
+  max-width: none;
+}
+
+.voice-panel {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+/* Header */
+
+.voice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 21px 19px;
+}
+
+.voice-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.voice-brand-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.voice-brand h2 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+.voice-brand p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.voice-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.voice-status-indicator,
+.voice-live-label span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.voice-status-badge.online {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.voice-status-badge.online .voice-status-indicator {
+  background: var(--success);
+}
+
+.voice-status-badge.offline {
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+}
+
+.voice-status-badge.offline .voice-status-indicator {
+  background: var(--muted);
+}
+
+.voice-status-badge.connecting {
+  background: #fff4df;
+  color: #a66b13;
+}
+
+.voice-status-badge.connecting .voice-status-indicator {
+  background: #e5a12d;
+  animation: voice-pulse 1s infinite;
+}
+
+.voice-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+/* Call Area */
+
+.voice-call-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 29px 20px 25px;
+  text-align: center;
+}
+
+.voice-avatar {
+  position: relative;
+  width: 105px;
+  height: 105px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 19px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+}
+
+.voice-avatar::before,
+.voice-avatar::after {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.12;
+}
+
+.voice-avatar::after {
+  inset: -17px;
+  opacity: 0.07;
+}
+
+.voice-avatar-inner {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 7px 20px rgba(8, 127, 114, 0.19);
+}
+
+.voice-microphone {
+  color: white;
+  font-size: 30px;
+}
+
+.voice-avatar.speaking {
+  animation: voice-avatar-pulse 2s ease-in-out infinite;
+}
+
+.voice-avatar.loading .voice-avatar-inner {
+  animation: voice-pulse 1s ease-in-out infinite;
+}
+
+.voice-call-area h3 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.voice-call-description {
+  max-width: 260px;
+  margin: 9px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* Audio Wave */
+
+.voice-wave {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  margin: 20px 0 12px;
+}
+
+.voice-wave span {
+  width: 3px;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--accent);
+  opacity: 0.3;
+}
+
+.voice-wave.wave-active span {
+  opacity: 0.9;
+  animation: voice-wave-animation 0.8s ease-in-out infinite alternate;
+  animation-delay: calc(var(--bar-index) * 0.055s);
+}
+
+@keyframes voice-wave-animation {
+  from { height: 5px; }
+  to { height: 25px; }
+}
+
+@keyframes voice-avatar-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(8, 127, 114, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(8, 127, 114, 0.04);
+  }
+}
+
+@keyframes voice-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* Connection Label */
+
+.voice-call-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.voice-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.voice-status-dot.active {
+  background: var(--success);
+}
+
+.voice-status-dot.pending {
+  background: #e5a12d;
+  animation: voice-pulse 1s infinite;
+}
+
+/* Buttons */
+
+.voice-controls {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.voice-start-button,
+.voice-end-button {
+  width: 100%;
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 11px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.voice-start-button {
+  background: var(--accent);
+  box-shadow: 0 5px 13px rgba(8, 127, 114, 0.15);
+}
+
+.voice-start-button:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.voice-start-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.voice-end-button {
+  background: #bd4650;
+}
+
+.voice-end-button:hover {
+  background: #a83943;
+  transform: translateY(-2px);
+}
+
+.voice-button-icon {
+  font-size: 16px;
+}
+
+.voice-privacy-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.voice-privacy-note span {
+  color: var(--success);
+  font-size: 8px;
+}
+
+/* Error */
+
+.voice-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 17px 15px;
+  padding: 12px;
+  border: 1px solid var(--danger);
+  border-radius: 10px;
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.voice-error > span {
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--danger);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.voice-error p {
+  margin: 1px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Transcript */
+
+.voice-transcript {
+  margin: 0 15px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-soft);
+}
+
+.voice-transcript-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.voice-transcript-heading h3 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.voice-transcript-heading p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.voice-live-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--success);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.voice-live-label span {
+  background: var(--success);
+}
+
+.voice-transcript-content {
+  max-height: 280px;
+  min-height: 150px;
+  overflow-y: auto;
+  padding: 13px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+.voice-empty-state {
+  min-height: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.voice-empty-icon {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.voice-empty-state p {
+  margin: 0;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.voice-empty-state span {
+  max-width: 190px;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+/* Transcript Messages */
+
+.voice-message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.voice-message {
+  max-width: 95%;
+}
+
+.voice-user-message {
+  margin-left: auto;
+}
+
+.voice-ai-message {
+  margin-right: auto;
+}
+
+.voice-message-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.voice-user-message .voice-message-label {
+  justify-content: flex-end;
+}
+
+.voice-message-avatar {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.voice-message p {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.voice-user-message p {
+  border-color: transparent;
+  border-bottom-right-radius: 3px;
+  background: var(--accent-soft);
+}
+
+.voice-ai-message p {
+  border-bottom-left-radius: 3px;
+}
+
+/* Footer */
+
+.voice-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 19px;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 8px;
+}
+
+.voice-footer span:first-child {
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.voice-footer span:last-child {
+  font-weight: 500;
+}
+
+/* Show slots button */
+
+.show-slots-button {
+  display: block;
+  margin: 16px auto 0;
+  padding: 9px 18px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.show-slots-button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* --------------------------------
+   RESPONSIVE
+-------------------------------- */
+
+@media (max-width: 1100px) {
+  .app {
+    padding: 22px 24px 40px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 16px;
+  }
+
+  .overview-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 850px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    position: static;
+  }
+
+  .assistant-container {
+    max-width: none;
+  }
+
+  .voice-panel {
+    max-width: 100%;
+  }
+
+  .voice-transcript-content {
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 16px 12px 30px;
+  }
+
+  .dashboard-header {
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 21px;
+  }
+
+  .brand h1 {
+    font-size: 19px;
+  }
+
+  .brand p {
+    font-size: 10px;
+  }
+
+  .dashboard-date {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+    padding: 8px 10px;
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+
+  .overview-card {
+    min-height: 78px;
+    padding: 11px 8px;
+    border-radius: 10px;
+  }
+
+  .overview-card p {
+    margin-bottom: 7px;
+    font-size: 9px;
+  }
+
+  .overview-card h2 {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .dashboard-main {
+    gap: 15px;
+  }
+
+  .dashboard-section {
+    padding: 16px 12px;
+  }
+
+  .section-heading {
+    margin-bottom: 15px;
+  }
+
+  .section-heading h2 {
+    font-size: 15px;
+  }
+
+  .doctor-list {
+    grid-template-columns: 1fr;
+  }
+
+  .appointments-table th,
+  .appointments-table td {
+    padding: 11px;
+  }
+
+  .voice-header {
+    padding: 17px 13px;
+  }
+
+  .voice-brand h2 {
+    font-size: 12px;
+  }
+
+  .voice-status-badge {
+    padding: 6px 7px;
+    font-size: 8px;
+  }
+
+  .voice-call-area {
+    padding: 25px 15px 22px;
+  }
+
+  .voice-transcript {
+    margin: 0 10px;
+  }
+
+  .voice-footer {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 350px) {
+  .overview-card {
+    padding: 10px 5px;
+  }
+
+  .overview-card p {
+    font-size: 8px;
+  }
+
+  .overview-card h2 {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-panel *,
+  .voice-panel *::before,
+  .voice-panel *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+/* ========================================
+   PHONE-STYLE VOICE CALL BONUS
+======================================== */
+
+/* Dashboard launcher */
+
+.voice-launcher-card {
+  padding: 23px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.voice-launcher-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.voice-launcher-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 25px;
+}
+
+.voice-launcher-top h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.voice-launcher-top p {
+  margin: 5px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.voice-launcher-description {
+  margin-top: 19px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.voice-launcher-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin: 17px 0;
+  color: var(--success);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.voice-launcher-button {
+  margin-top: 5px;
+}
+
+/* Popup backdrop */
+
+.phone-call-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(8, 19, 18, 0.72);
+  backdrop-filter: blur(8px);
+  animation: phone-overlay-in 0.22s ease;
+}
+
+@keyframes phone-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Phone window */
+
+.phone-call-window {
+  width: 100%;
+  max-width: 440px;
+  max-height: min(900px, 94vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 25px 90px rgba(0, 0, 0, 0.3);
+  animation: phone-window-in 0.3s ease;
+}
+
+@keyframes phone-window-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+
+.phone-call-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.phone-call-label {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.phone-call-header p {
+  margin: 5px 0 0;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.phone-close-button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.phone-close-button:hover {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+/* Caller */
+
+.phone-caller-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px 10px;
+  text-align: center;
+}
+
+.phone-caller-avatar {
+  width: 84px;
+  height: 84px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  border: 7px solid var(--accent-soft);
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-size: 34px;
+  box-shadow: 0 0 0 5px var(--surface);
+}
+
+.phone-caller-avatar.phone-speaking {
+  animation: phone-speaking-pulse 1.4s ease-in-out infinite;
+}
+
+.phone-caller-avatar.phone-connecting {
+  animation: phone-connecting-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes phone-speaking-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 5px var(--surface), 0 0 0 8px rgba(8, 127, 114, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 5px var(--surface), 0 0 0 16px rgba(8, 127, 114, 0.15);
+  }
+}
+
+@keyframes phone-connecting-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.phone-caller-area h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.phone-caller-subtitle {
+  margin: 5px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.phone-call-state {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.phone-state-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.phone-call-state.connected,
+.phone-call-state.ready {
+  color: var(--success);
+}
+
+.phone-call-state.connected .phone-state-dot,
+.phone-call-state.ready .phone-state-dot {
+  background: var(--success);
+}
+
+.phone-call-state.connecting .phone-state-dot {
+  background: #e5a12d;
+  animation: phone-connecting-pulse 1s infinite;
+}
+
+.phone-call-timer {
+  margin-top: 9px;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+.phone-connecting-text {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+/* Waveform */
+
+.phone-waveform {
+  height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 0 20px;
+}
+
+.phone-waveform span {
+  width: 3px;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--accent);
+  opacity: 0.35;
+}
+
+.phone-waveform.active span {
+  opacity: 1;
+  animation: phone-wave-motion 0.65s ease-in-out infinite alternate;
+  animation-delay: calc(var(--wave-index) * 0.035s);
+}
+@keyframes phone-wave-motion {
+  0% {
+    height: 5px;
+  }
+  100% {
+    height: var(--wave-height, 20px);
+  }
+}
+
+.phone-wave-caption {
+  min-height: 17px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 9px;
+  text-align: center;
+}
+
+/* Booking confirmation */
+
+.phone-booking-confirmation {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 12px 18px;
+  padding: 12px;
+  border: 1px solid var(--success);
+  border-radius: 12px;
+  background: var(--success-soft);
+}
+
+.phone-confirmation-icon {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--success);
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.phone-booking-confirmation strong {
+  color: var(--success);
+  font-size: 11px;
+}
+
+.phone-booking-confirmation p {
+  margin: 5px 0 0;
+  color: var(--text);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* Transcript */
+
+.phone-transcript {
+  min-height: 145px;
+  display: flex;
+  flex-direction: column;
+  margin: 12px 17px 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface-soft);
+}
+
+.phone-transcript-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 13px;
+  border-bottom: 1px solid var(--border);
+}
+
+.phone-transcript-header h3 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.phone-transcript-header p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 9px;
+}
+
+.phone-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--success);
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.phone-live-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.phone-transcript-messages {
+  min-height: 110px;
+  max-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  overflow-y: auto;
+  padding: 12px;
+  scrollbar-width: thin;
+}
+
+.phone-transcript-empty {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.phone-message {
+  max-width: 90%;
+}
+
+.phone-message-user {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.phone-message-assistant {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.phone-message > span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-secondary);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.phone-message p {
+  margin: 0;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 10px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.phone-message-user p {
+  border-color: transparent;
+  border-bottom-right-radius: 3px;
+  background: var(--accent-soft);
+}
+
+.phone-message-assistant p {
+  border-bottom-left-radius: 3px;
+}
+
+/* Controls */
+
+.phone-call-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  padding: 19px 15px 14px;
+}
+
+.phone-control-button,
+.phone-end-button {
+  width: 57px;
+  height: 57px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.phone-control-button {
+  background: var(--surface-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.phone-control-button:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.phone-control-button.muted {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.phone-control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.phone-control-button span {
+  font-size: 17px;
+}
+
+.phone-control-button small,
+.phone-end-button small {
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.phone-end-button {
+  background: #c84450;
+  color: white;
+  transform: rotate(135deg);
+}
+
+.phone-end-button:hover:not(:disabled) {
+  background: #a9323e;
+  transform: rotate(135deg) scale(1.07);
+}
+
+.phone-end-button span {
+  font-size: 19px;
+}
+
+.phone-end-button small {
+  transform: rotate(-135deg);
+}
+
+.phone-end-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.phone-call-error {
+  margin: 0 18px 12px;
+  padding: 10px;
+  border-radius: 9px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.phone-call-footer {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 9px;
+  text-align: center;
+}
+
+/* Mobile call layout */
+
+@media (max-width: 600px) {
+  .phone-call-overlay {
+    align-items: center;
+    padding: 8px;
+  }
+
+  .phone-call-window {
+    max-height: 96vh;
+    border-radius: 20px;
+  }
+
+  .phone-call-header {
+    padding: 14px 16px;
+  }
+
+  .phone-caller-area {
+    padding-top: 17px;
+  }
+
+  .phone-caller-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 29px;
+  }
+
+  .phone-caller-area h2 {
+    font-size: 17px;
+  }
+
+  .phone-transcript {
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+
+  .phone-transcript-messages {
+    max-height: 150px;
+  }
+
+  .phone-call-controls {
+    padding-top: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-call-overlay,
+  .phone-call-window,
+  .phone-caller-avatar,
+  .phone-waveform span {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================
+   CARECONNECT PREMIUM CALL POPUP
+   ========================================== */
+
+.phone-call-overlay {
+  background: rgba(5, 18, 17, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 18px;
+}
+
+.phone-call-window {
+  max-width: 460px;
+  max-height: min(900px, 94vh);
+  border: 1px solid rgba(91, 190, 166, 0.24);
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      ellipse at 50% -15%,
+      rgba(23, 139, 117, 0.17),
+      transparent 55%
+    ),
+    var(--surface);
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.035);
+}
+
+/* Popup header */
+
+.phone-call-header {
+  padding: 19px 23px;
+  border-bottom: 1px solid var(--border);
+}
+
+.phone-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.phone-header-logo {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(39, 164, 137, 0.25);
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 21px;
+}
+
+.phone-call-label {
+  font-size: 10px;
+  letter-spacing: 1.7px;
+}
+
+.phone-call-header p {
+  margin-top: 4px;
+  font-size: 10px;
+}
+
+.phone-close-button {
+  width: 35px;
+  height: 35px;
+  border-radius: 11px;
+  font-size: 14px;
+}
+
+/* Assistant identity */
+
+.phone-caller-area {
+  padding: 25px 20px 8px;
+}
+
+.phone-avatar-ring {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 15px;
+  border: 1px solid rgba(30, 166, 137, 0.3);
+  border-radius: 50%;
+  background: rgba(19, 139, 113, 0.07);
+  box-shadow: 0 0 0 9px rgba(19, 139, 113, 0.035);
+}
+
+.phone-avatar-ring::before,
+.phone-avatar-ring::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(30, 166, 137, 0.15);
+  border-radius: 50%;
+}
+
+.phone-avatar-ring::after {
+  inset: -16px;
+  opacity: 0.55;
+}
+
+.phone-avatar-ring.speaking {
+  animation: premium-avatar-pulse 1.5s ease-in-out infinite;
+}
+
+.phone-avatar-ring.connecting {
+  animation: premium-avatar-connect 1.2s ease-in-out infinite;
+}
+
+.phone-caller-avatar {
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #159b83, #086b60);
+  color: white;
+  font-size: 35px;
+  box-shadow:
+    0 9px 25px rgba(5, 112, 94, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.phone-assistant-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 3px 0 10px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.phone-assistant-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.phone-caller-area h2 {
+  font-size: 20px;
+  letter-spacing: -0.6px;
+}
+
+.phone-caller-subtitle {
+  margin-top: 6px;
+  font-size: 11px;
+}
+
+.phone-call-state {
+  margin-top: 15px;
+  font-size: 11px;
+}
+
+.phone-call-timer {
+  margin-top: 8px;
+  font-size: 27px;
+  letter-spacing: 1.5px;
+}
+
+.phone-connecting-text {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+/* Premium waveform */
+
+.phone-waveform {
+  height: 48px;
+  gap: 4px;
+  margin-top: 3px;
+}
+
+.phone-waveform span {
+  width: 3px;
+  min-height: 5px;
+  border-radius: 10px;
+  background: linear-gradient(
+    to top,
+    #087f72,
+    #54cdb0
+  );
+  opacity: 0.32;
+}
+
+.phone-waveform.active span {
+  opacity: 1;
+  animation: phone-wave-motion 0.65s ease-in-out infinite alternate;
+  animation-delay: calc(var(--wave-index) * 0.035s);
+}
+
+.phone-wave-caption {
+  min-height: 18px;
+  margin: 0 0 5px;
+  font-size: 9px;
+  letter-spacing: 0.2px;
+}
+
+/* Booking confirmation */
+
+.phone-booking-confirmation {
+  margin: 12px 19px;
+  padding: 13px;
+  border-radius: 13px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* Transcript container */
+
+.phone-transcript {
+  min-height: 165px;
+  margin: 13px 19px 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.025);
+}
+
+.phone-transcript-header {
+  padding: 14px 15px;
+}
+
+.phone-transcript-header h3 {
+  font-size: 12px;
+  letter-spacing: -0.2px;
+}
+
+.phone-transcript-header p {
+  margin-top: 5px;
+  font-size: 9px;
+}
+
+.phone-live-indicator {
+  padding: 6px 9px;
+  border: 1px solid var(--success-soft);
+  border-radius: 20px;
+  background: var(--success-soft);
+  font-size: 8px;
+}
+
+.phone-live-indicator span {
+  box-shadow: 0 0 7px var(--success);
+  animation: premium-live-pulse 1.4s infinite;
+}
+
+.phone-transcript-messages {
+  min-height: 115px;
+  max-height: 190px;
+  gap: 13px;
+  padding: 14px;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+.phone-transcript-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.phone-transcript-messages::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--muted);
+}
+
+.phone-transcript-empty {
+  gap: 6px;
+  min-height: 120px;
+}
+
+.phone-transcript-empty-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 3px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 17px;
+}
+
+.phone-transcript-empty p {
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.phone-transcript-empty > span:last-child {
+  font-size: 9px;
+}
+
+/* Transcript bubbles */
+
+.phone-message {
+  max-width: 88%;
+  animation: premium-message-in 0.22s ease both;
+}
+
+.phone-message > span {
+  margin-bottom: 5px;
+  font-size: 8px;
+  letter-spacing: 0.8px;
+}
+
+.phone-message p {
+  padding: 10px 13px;
+  border-radius: 13px;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.phone-message-user p {
+  border-bottom-right-radius: 4px;
+  background: var(--accent-soft);
+}
+
+.phone-message-assistant p {
+  border-bottom-left-radius: 4px;
+}
+
+/* Call controls */
+
+.phone-call-controls {
+  gap: 25px;
+  padding: 20px 15px 16px;
+}
+
+.phone-control-button,
+.phone-end-button {
+  width: 72px;
+  height: 66px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  transform: none;
+}
+
+.phone-control-button {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.phone-control-button span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.phone-control-button small,
+.phone-end-button small {
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.phone-end-button {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 19px;
+  background: linear-gradient(145deg, #e4525e, #b92e42);
+  color: white;
+  box-shadow: 0 6px 17px rgba(190, 48, 66, 0.22);
+}
+
+.phone-end-button:hover:not(:disabled) {
+  background: linear-gradient(145deg, #ee626d, #a92339);
+  transform: translateY(-2px);
+  box-shadow: 0 9px 20px rgba(190, 48, 66, 0.28);
+}
+
+/* The icon rotates independently. The button and label remain upright. */
+.phone-end-icon {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+  transform: rotate(135deg);
+}
+
+.phone-end-button small {
+  transform: none;
+}
+
+.phone-end-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Footer */
+
+.phone-call-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 10px;
+  font-size: 9px;
+  letter-spacing: 0.2px;
+}
+
+.phone-call-footer span:first-child {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.phone-call-footer span:last-child {
+  margin-left: 5px;
+  color: var(--muted);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+/* Launcher card refinement */
+
+.voice-launcher-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 19px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.voice-launcher-card::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -65px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.voice-launcher-top,
+.voice-launcher-description,
+.voice-launcher-features,
+.voice-launcher-button {
+  position: relative;
+  z-index: 1;
+}
+
+.voice-launcher-icon {
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(8, 127, 114, 0.09);
+}
+
+.voice-launcher-button {
+  min-height: 49px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+/* Animations */
+
+@keyframes premium-avatar-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 9px rgba(19, 139, 113, 0.035);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(19, 139, 113, 0.09);
+  }
+}
+
+@keyframes premium-avatar-connect {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(0.97);
+  }
+}
+
+@keyframes premium-live-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes premium-message-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 600px) {
+  .phone-call-overlay {
+    padding: 8px;
+  }
+
+  .phone-call-window {
+    max-height: 96vh;
+    border-radius: 23px;
+  }
+
+  .phone-caller-area {
+    padding-top: 20px;
+  }
+
+  .phone-avatar-ring {
+    width: 100px;
+    height: 100px;
+  }
+
+  .phone-caller-avatar {
+    width: 74px;
+    height: 74px;
+  }
+
+  .phone-transcript {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .phone-transcript-messages {
+    max-height: 165px;
+  }
+
+  .phone-call-controls {
+    padding-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-call-window *,
+  .phone-call-window *::before,
+  .phone-call-window *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   FIX: STABLE WAVEFORM AND CALL CONTROLS
+========================================= */
+
+/* Keep the popup content in a fixed vertical layout */
+.phone-call-window {
+  display: flex;
+  flex-direction: column;
+  max-height: min(760px, 90vh);
+  overflow: hidden;
+}
+
+/* Header must not shrink */
+.phone-call-window .phone-header {
+  flex-shrink: 0;
+}
+
+/* Waveform gets a fixed-height area */
+.phone-call-window .phone-wave,
+.phone-call-window .phone-waveform,
+.phone-call-window .phone-visualizer {
+  height: 64px;
+  min-height: 64px;
+  max-height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Keep individual waveform bars within the fixed area */
+.phone-call-window .phone-wave span,
+.phone-call-window .phone-waveform span,
+.phone-call-window .phone-visualizer span {
+  flex-shrink: 0;
+  max-height: 42px;
+}
+
+/* Transcript uses the remaining available space */
+.phone-call-window .phone-transcript,
+.phone-call-window .phone-transcript-messages {
+  min-height: 0;
+}
+
+/* Footer stays at the bottom */
+.phone-call-window .phone-footer,
+.phone-call-window .phone-controls,
+.phone-call-window .phone-call-controls {
+  flex-shrink: 0;
+  margin-top: auto;
+  position: relative;
+}
+
+/* Keep the action buttons in one stable row */
+.phone-call-window .phone-controls,
+.phone-call-window .phone-call-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px 12px;
+}
+
+/* Prevent button movement */
+.phone-call-window .phone-controls button,
+.phone-call-window .phone-call-controls button {
+  flex-shrink: 0;
+  transform: none;
+}
+
+/* Do not rotate the end-call icon */
+.phone-call-window .phone-end-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: none !important;
+  rotate: none !important;
+}
+
+/* Ensure the end-call button itself is not rotated */
+.phone-call-window .phone-end-button {
+  transform: none !important;
+  rotate: none !important;
+}
+
+/* Keep footer buttons visually centered */
+.phone-call-window .phone-end-button,
+.phone-call-window .phone-mute-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Small screen adjustment */
+@media (max-width: 600px) {
+  .phone-call-window {
+    max-height: 88vh;
+  }
+
+  .phone-call-window .phone-wave,
+  .phone-call-window .phone-waveform,
+  .phone-call-window .phone-visualizer {
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+  }
+}
+
+/* ==========================================
+   CARECONNECT - TWO COLUMN CALL POPUP
+========================================== */
+
+.phone-call-window.phone-split-window {
+  width: min(940px, 94vw);
+  max-width: 940px;
+  height: min(720px, 90vh);
+  max-height: 90vh;
+  min-height: 520px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+/* Header */
+.phone-split-header {
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 76px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.1));
+}
+
+.phone-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.phone-secure-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+.phone-secure-label .phone-state-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c58b;
+}
+
+/* Main two-column layout */
+.phone-split-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+}
+
+/* Left call panel */
+.phone-call-left {
+  min-width: 0;
+  min-height: 0;
+  padding: 24px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  border-right: 1px solid var(--border-color, rgba(255,255,255,0.1));
+}
+
+/* Compact caller information */
+.phone-call-left .phone-caller-area {
+  flex-shrink: 0;
+  padding: 4px 0 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.phone-call-left .phone-avatar-ring {
+  margin-bottom: 12px;
+}
+
+.phone-call-left .phone-caller-area h2 {
+  margin: 9px 0 4px;
+  font-size: 21px;
+}
+
+.phone-call-left .phone-caller-subtitle {
+  margin: 0 0 10px;
+  font-size: 12px;
+}
+
+.phone-call-left .phone-assistant-tag {
+  font-size: 9px;
+}
+
+.phone-call-left .phone-call-state {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.phone-call-left .phone-call-timer {
+  margin-top: 7px;
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fixed waveform region: animation cannot move other elements */
+.phone-wave-area {
+  width: 100%;
+  height: 104px;
+  min-height: 104px;
+  max-height: 104px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.phone-wave-area .phone-waveform {
+  width: 100%;
+  height: 58px;
+  min-height: 58px;
+  max-height: 58px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.phone-wave-area .phone-waveform span {
+  flex: 0 1 4px;
+  min-width: 2px;
+  max-width: 5px;
+  height: var(--wave-height, 20px);
+  max-height: 48px;
+  border-radius: 8px;
+  transform: none;
+  transition: height 180ms ease;
+}
+
+.phone-wave-area .phone-wave-caption {
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+/* Booking confirmation stays inside left panel */
+.phone-call-left .phone-booking-confirmation {
+  width: 100%;
+  flex-shrink: 0;
+  margin: 8px 0;
+}
+
+/* Call controls anchored at the bottom */
+.phone-call-left .phone-split-controls {
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: auto;
+  padding: 18px 8px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.phone-call-left .phone-control-button,
+.phone-call-left .phone-end-button {
+  width: 76px;
+  min-width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transform: none !important;
+  rotate: none !important;
+}
+
+.phone-call-left .phone-control-button span,
+.phone-call-left .phone-end-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transform: none !important;
+  rotate: none !important;
+}
+
+.phone-call-left .phone-control-button small,
+.phone-call-left .phone-end-button small {
+  line-height: 1;
+  margin: 0;
+}
+
+/* Right transcript panel */
+.phone-call-right {
+  min-width: 0;
+  min-height: 0;
+  padding: 20px;
+  display: flex;
+  overflow: hidden;
+}
+
+.phone-call-right .phone-transcript {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Transcript heading stays visible */
+.phone-call-right .phone-transcript-header {
+  flex-shrink: 0;
+  padding: 4px 2px 16px;
+}
+
+/* Only this area scrolls */
+.phone-call-right .phone-transcript-messages {
+  flex: 1;
+  min-height: 0;
+  height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 14px 8px 14px 2px;
+  scroll-behavior: smooth;
+}
+
+/* Empty transcript state */
+.phone-call-right .phone-transcript-empty {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 12px;
+}
+
+/* Message spacing */
+.phone-call-right .phone-message {
+  max-width: 92%;
+  margin-bottom: 16px;
+  overflow-wrap: anywhere;
+}
+
+/* Footer */
+.phone-split-footer {
+  min-height: 42px;
+  flex-shrink: 0;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--border-color, rgba(255,255,255,0.1));
+  font-size: 10px;
+}
+
+/* Keep end-call icon upright */
+.phone-split-window .phone-end-icon {
+  transform: none !important;
+  rotate: none !important;
+}
+
+.phone-split-window .phone-end-button {
+  transform: none !important;
+  rotate: none !important;
+}
+
+/* Scrollbar styling */
+.phone-call-right .phone-transcript-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.phone-call-right .phone-transcript-messages::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(128, 145, 160, 0.4);
+}
+
+/* Mobile layout */
+@media (max-width: 680px) {
+  .phone-call-window.phone-split-window {
+    width: 95vw;
+    height: 92vh;
+    max-height: 92vh;
+    min-height: 0;
+  }
+
+  .phone-split-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(180px, 1fr);
+  }
+
+  .phone-call-left {
+    padding: 12px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.1));
+  }
+
+  .phone-call-left .phone-avatar-ring {
+    transform: scale(0.78);
+    margin-top: -8px;
+    margin-bottom: 0;
+  }
+
+  .phone-call-left .phone-caller-area h2 {
+    font-size: 17px;
+  }
+
+  .phone-call-left .phone-caller-subtitle {
+    margin-bottom: 5px;
+  }
+
+  .phone-wave-area {
+    height: 75px;
+    min-height: 75px;
+    max-height: 75px;
+  }
+
+  .phone-wave-area .phone-waveform {
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+  }
+
+  .phone-call-left .phone-split-controls {
+    padding: 8px 0 2px;
+  }
+
+  .phone-call-left .phone-control-button,
+  .phone-call-left .phone-end-button {
+    width: 62px;
+    min-width: 62px;
+    height: 62px;
+  }
+
+  .phone-call-right {
+    padding: 12px 16px;
+  }
+
+  .phone-split-footer {
+    padding: 8px 14px;
+  }
+
+  .phone-secure-label {
+    display: none;
+  }
+}
+
+/* Transcript panel inner spacing */
+.phone-call-right .phone-transcript {
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+.phone-call-right .phone-transcript-header {
+  padding: 8px 10px 18px;
+  margin-bottom: 4px;
+}
+
+.phone-call-right .phone-transcript-messages {
+  padding: 12px 14px 18px;
+  box-sizing: border-box;
+}
+
+/* Give each message comfortable breathing room */
+.phone-call-right .phone-message {
+  padding: 12px 15px;
+  margin: 0 0 16px;
+  box-sizing: border-box;
+  border-radius: 14px;
+}
+
+/* Keep message labels and text away from bubble edges */
+.phone-call-right .phone-message > span {
+  display: block;
+  margin-bottom: 7px;
+  padding: 0;
+}
+
+.phone-call-right .phone-message p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Empty state spacing */
+.phone-call-right .phone-transcript-empty {
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 680px) {
+  .phone-call-right .phone-transcript {
+    padding: 4px;
+  }
+
+  .phone-call-right .phone-transcript-messages {
+    padding: 10px;
+  }
+}
+
+/* ==========================================
+   REALISTIC VOICE WAVEFORM ANIMATION
+========================================== */
+
+.phone-wave-area .phone-waveform {
+  position: relative;
+  gap: 4px;
+  perspective: 400px;
+}
+
+.phone-wave-area .phone-waveform span {
+  width: 4px;
+  min-width: 3px;
+  max-width: 5px;
+  height: var(--wave-height, 20px);
+  max-height: 50px;
+  border-radius: 20px;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: waveform-idle 1.8s ease-in-out infinite;
+  animation-delay: var(--wave-delay, 0s);
+}
+
+/* Gentle movement while listening */
+@keyframes waveform-idle {
+  0%, 100% {
+    transform: scaleY(0.22);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scaleY(0.48);
+    opacity: 0.75;
+  }
+}
+
+/* More energetic movement while speaking */
+.phone-wave-area .phone-waveform.active span {
+  animation-name: waveform-speaking;
+  animation-duration: var(--wave-duration, 0.8s);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+@keyframes waveform-speaking {
+  0%, 100% {
+    transform: scaleY(0.25);
+  }
+
+  20% {
+    transform: scaleY(0.85);
+  }
+
+  45% {
+    transform: scaleY(0.4);
+  }
+
+  65% {
+    transform: scaleY(1.2);
+  }
+
+  85% {
+    transform: scaleY(0.55);
+  }
+}
+
+/* Slightly different rhythm across the bars */
+.phone-wave-area .phone-waveform span:nth-child(3n) {
+  animation-direction: alternate;
+}
+
+.phone-wave-area .phone-waveform span:nth-child(4n) {
+  animation-direction: alternate-reverse;
+}
+
+.phone-wave-area .phone-waveform span:nth-child(5n) {
+  animation-duration: 1.1s;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .phone-wave-area .phone-waveform span {
+    animation: none !important;
+    transform: scaleY(0.5);
+  }
+}
+.phone-wave-area .phone-waveform {
+  height: 58px;
+  min-height: 58px;
+  max-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.phone-wave-area .phone-waveform span {
+  display: block;
+  flex: 0 1 4px;
+  min-width: 2px;
+  max-width: 5px;
+  border-radius: 20px;
+  background: var(--accent-color, #20b99a);
+  transition: height 75ms linear;
+  animation: none !important;
+  will-change: height;
+}
+/* =========================================
+   CARECONNECT - PREMIUM CALL TRANSITIONS
+========================================= */
+
+.phone-call-window {
+  animation: careconnect-call-enter 350ms ease-out both;
+  transition:
+    box-shadow 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
+}
+
+@keyframes careconnect-call-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.phone-call-overlay {
+  animation: careconnect-overlay-enter 250ms ease-out both;
+}
+
+@keyframes careconnect-overlay-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Connection state */
+
+.phone-call-window.call-connecting .phone-avatar-ring {
+  animation: careconnect-connecting 1.5s ease-in-out infinite;
+}
+
+@keyframes careconnect-connecting {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.045);
+    opacity: 1;
+  }
+}
+
+/* Live speaking glow */
+
+.phone-call-window.call-speaking .phone-avatar-ring {
+  box-shadow:
+    0 0 0 7px rgba(32, 185, 154, 0.08),
+    0 0 28px rgba(32, 185, 154, 0.25);
+}
+
+.phone-call-window.call-active .phone-state-dot {
+  animation: careconnect-status-pulse 2s ease-in-out infinite;
+}
+
+@keyframes careconnect-status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+/* Smooth waveform movement */
+
+.phone-wave-area .phone-waveform {
+  min-height: 100px;
+  height: 100px;
+  max-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.phone-wave-area .phone-waveform span {
+  display: block;
+  flex: 0 1 4px;
+  min-width: 2px;
+  max-width: 5px;
+  border-radius: 20px;
+  background: var(--accent-color, #20b99a);
+  transition:
+    height 90ms ease-out,
+    opacity 150ms ease,
+    box-shadow 150ms ease;
+  animation: none !important;
+  will-change: height;
+}
+
+.phone-call-window.call-speaking
+.phone-wave-area .phone-waveform span {
+  box-shadow: 0 0 8px rgba(32, 185, 154, 0.3);
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-call-window,
+  .phone-call-overlay,
+  .phone-call-window *,
+  .phone-call-overlay * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Highlight newly booked or cancelled appointments */
+.appointment-highlight {
+  animation: appointmentHighlight 3s ease-in-out;
+  background: rgba(16, 185, 129, 0.18) !important;
+}
+
+@keyframes appointmentHighlight {
+  0% {
+    background: rgba(16, 185, 129, 0.4);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+
